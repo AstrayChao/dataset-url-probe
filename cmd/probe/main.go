@@ -60,7 +60,8 @@ func run() error {
 	summaryJSONName := "summary.json"
 	summaryMDName := "summary.md"
 	if cfg.Dated {
-		stamp := started.UTC().Format("2006-01-02")
+		// 用服务器本地日期命名，便于和 systemd timer 的本地时区对齐。
+		stamp := started.Format("2006-01-02")
 		resultsName = "results-" + stamp + ".csv"
 		summaryJSONName = "summary-" + stamp + ".json"
 		summaryMDName = "summary-" + stamp + ".md"
