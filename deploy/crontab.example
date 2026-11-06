@@ -1,3 +1,35 @@
-# 每天 03:30 执行一次，-dated 让每次输出带日期后缀保留历史。
-# 需要先创建 /var/lib/dataset-probe 并确保运行用户可写。
-30 3 * * * cd /opt/dataset-probe && flock -n /var/lock/dataset-probe.lock ./dataset-probe -input data/domains.csv -outdir /var/lib/dataset-probe -dated -concurrency 200 -timeout 12s >> /var/log/dataset-probe.log 2>&1
+# ============================================================
+# 方案 A：root crontab（最简单，等价于手动 sudo 直接运行）
+#
+#   sudo crontab -e
+#
+# 注意：
+#   1. crontab 文件最后必须留一个空行，否则最后一行不会生效。
+#   2. cron 的 PATH 很短，二进制和参数尽量写绝对路径。
+#   3. root crontab 里的命令不需要再写 sudo。
+#   4. 把 /mnt/vdb/probe/dataset-probe-linux-amd64 换成你的真实路径：
+#        readlink -f ./dataset-probe-linux-amd64
+# ============================================================
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=""
+
+# 每天 03:30（服务器本地时区）全量探活。
+# flock -n：上一轮还没跑完时直接跳过本次，避免重叠。
+30 3 * * * /usr/bin/flock -n /mnt/vdb/probe/.probe.lock /mnt/vdb/probe/dataset-probe-linux-amd64 -input /mnt/vdb/probe/domains.csv -outdir /mnt/vdb/probe -dated -concurrency 200 -timeout 15s >> /mnt/vdb/probe/probe.log 2>&1
+
+# 每天 05:15 清理 30 天前的 CSV / JSON / Markdown。
+15 5 * * * find /mnt/vdb/probe -maxdepth 1 -type f \( -name 'results-*.csv' -o -name 'summary-*.json' -o -name 'summary-*.md' \) -mtime +30 -delete
+
+
+# ============================================================
+# 方案 B：专用用户（可选，更安全）
+#
+#   sudo crontab -u datasetprobe -e
+#
+# 需要先创建用户和输出目录：
+#   sudo useradd -r -s /usr/sbin/nologin datasetprobe
+#   sudo mkdir -p /var/lib/dataset-probe
+#   sudo chown datasetprobe:datasetprobe /var/lib/dataset-probe
+# ============================================================
+# 30 3 * * * /usr/bin/flock -n /var/lib/dataset-probe/.probe.lock /opt/dataset-probe/dataset-probe -input /opt/dataset-probe/data/domains.csv -outdir /var/lib/dataset-probe -dated -concurrency 200 -timeout 12s >> /var/lib/dataset-probe/probe.log 2>&1
