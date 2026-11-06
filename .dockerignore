@@ -1,0 +1,7 @@
+data/source
+out
+out_smoke
+.git
+.github
+bin
+dist

@@ -1,0 +1,8 @@
+bin/
+dist/
+out/
+out_smoke/
+publish/
+*.exe
+/*.xlsx
+.DS_Store

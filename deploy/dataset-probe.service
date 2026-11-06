@@ -1,0 +1,29 @@
+[Unit]
+Description=Dataset URL availability probe
+Documentation=https://github.com/AstrayChao/dataset-url-probe
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=datasetprobe
+Group=datasetprobe
+WorkingDirectory=/opt/dataset-probe
+ExecStart=/opt/dataset-probe/dataset-probe \
+    -input /opt/dataset-probe/data/domains.csv \
+    -outdir /var/lib/dataset-probe \
+    -dated \
+    -concurrency 200 \
+    -timeout 12s
+TimeoutStartSec=3h
+
+# 基础加固
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/dataset-probe
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true

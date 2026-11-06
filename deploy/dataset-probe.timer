@@ -1,0 +1,12 @@
+[Unit]
+Description=Run dataset URL probe daily
+
+[Timer]
+# 服务器本地时区每天 03:30 执行；随机延迟避免整点拥塞。
+OnCalendar=*-*-* 03:30:00
+RandomizedDelaySec=10m
+Persistent=true
+Unit=dataset-probe.service
+
+[Install]
+WantedBy=timers.target

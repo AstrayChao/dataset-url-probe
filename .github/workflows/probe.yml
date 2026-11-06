@@ -1,0 +1,137 @@
+name: daily-probe
+
+on:
+  schedule:
+    # 每天 UTC 02:17（北京时间 10:17）。GitHub 定时任务在高峰期可能延迟。
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "只探测前 N 条（0 = 全部，试跑用）"
+        required: false
+        default: "0"
+      concurrency:
+        description: "并发数"
+        required: false
+        default: "200"
+      timeout:
+        description: "单个域名单次尝试超时（如 12s）"
+        required: false
+        default: "12s"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    name: Probe dataset domains
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Build
+        run: |
+          set -euo pipefail
+          mkdir -p bin
+          CGO_ENABLED=0 go build -trimpath \
+            -ldflags "-s -w -X main.version=${GITHUB_SHA::7}" \
+            -o bin/dataset-probe ./cmd/probe
+          ./bin/dataset-probe -version
+
+      - name: Probe
+        env:
+          LIMIT: ${{ github.event.inputs.limit || '0' }}
+          CONCURRENCY: ${{ github.event.inputs.concurrency || '200' }}
+          TIMEOUT: ${{ github.event.inputs.timeout || '12s' }}
+        run: |
+          set -euo pipefail
+          ./bin/dataset-probe \
+            -input data/domains.csv \
+            -outdir out \
+            -concurrency "$CONCURRENCY" \
+            -timeout "$TIMEOUT" \
+            -limit "$LIMIT"
+
+      - name: Publish run summary
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ -f out/summary.md ]; then
+            cat out/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          {
+            echo ""
+            echo "### 运行环境（探活出口）"
+            echo '```'
+            echo "runner: ${RUNNER_NAME} / ${RUNNER_OS} ${RUNNER_ARCH}"
+            curl -fsS --max-time 10 https://ipinfo.io/json || echo "ipinfo 不可用"
+            echo
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload CSV artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-results-${{ github.run_number }}-${{ github.run_attempt }}
+          path: |
+            out/results.csv
+            out/summary.json
+            out/summary.md
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Publish latest to results branch
+        if: success()
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          DATE="$(date -u +%F)"
+          REMOTE="https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          PREV_SUMMARY="/tmp/prev_daily_summary.csv"
+          rm -f "$PREV_SUMMARY"
+
+          rm -rf ./publish
+          if git ls-remote --exit-code --heads "$REMOTE" results >/dev/null 2>&1; then
+            git clone --depth 1 --branch results "$REMOTE" publish
+            if [ -f publish/history/daily_summary.csv ]; then
+              cp publish/history/daily_summary.csv "$PREV_SUMMARY"
+            fi
+          fi
+
+          rm -rf ./publish
+          mkdir -p publish/history
+          cp out/results.csv publish/latest.csv
+          cp out/summary.json publish/latest-summary.json
+          cp out/summary.md publish/latest-summary.md
+          if [ -f "$PREV_SUMMARY" ]; then
+            cp "$PREV_SUMMARY" publish/history/daily_summary.csv
+          else
+            echo "date,total,probed,success,reachable,success_rate,reachable_rate,duration_seconds" \
+              > publish/history/daily_summary.csv
+          fi
+          jq -r --arg d "$DATE" \
+            '[$d, .total, .probed, .success, .reachable, .success_rate, .reachable_rate, .duration_seconds] | @csv' \
+            out/summary.json >> publish/history/daily_summary.csv
+
+          cd publish
+          git init -q -b results
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "results ${DATE}"
+          # 用 force push 让 results 分支始终只有一次提交，避免仓库体积每天增长。
+          git push -f "$REMOTE" HEAD:results

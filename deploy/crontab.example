@@ -1,0 +1,3 @@
+# 每天 03:30 执行一次，-dated 让每次输出带日期后缀保留历史。
+# 需要先创建 /var/lib/dataset-probe 并确保运行用户可写。
+30 3 * * * cd /opt/dataset-probe && flock -n /var/lock/dataset-probe.lock ./dataset-probe -input data/domains.csv -outdir /var/lib/dataset-probe -dated -concurrency 200 -timeout 12s >> /var/log/dataset-probe.log 2>&1
