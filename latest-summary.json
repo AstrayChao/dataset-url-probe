@@ -1,0 +1,968 @@
+{
+  "tool": "dataset-url-probe",
+  "version": "8498f27",
+  "generated_at": "2026-11-07T08:56:56Z",
+  "started_at": "2026-11-07T08:53:59Z",
+  "duration_seconds": 177.06,
+  "input": "data/domains.csv",
+  "total": 25561,
+  "probed": 25560,
+  "skipped": 1,
+  "success": 13983,
+  "reachable": 19315,
+  "success_rate": 0.5471,
+  "reachable_rate": 0.7557,
+  "average_latency_ms": 1277,
+  "by_scheme": {
+    "http": 6847,
+    "https": 18703,
+    "none": 11
+  },
+  "by_status_class": {
+    "2xx": 13927,
+    "3xx": 56,
+    "4xx": 5127,
+    "5xx": 205,
+    "no_response": 6246
+  },
+  "by_status_code": {
+    "0": 6246,
+    "200": 13862,
+    "202": 64,
+    "247": 1,
+    "301": 14,
+    "302": 30,
+    "303": 5,
+    "307": 7,
+    "400": 57,
+    "401": 31,
+    "402": 3,
+    "403": 1293,
+    "404": 3648,
+    "405": 13,
+    "406": 7,
+    "409": 17,
+    "410": 12,
+    "412": 8,
+    "418": 3,
+    "419": 1,
+    "421": 3,
+    "429": 27,
+    "432": 1,
+    "454": 3,
+    "500": 33,
+    "502": 29,
+    "503": 117,
+    "520": 6,
+    "521": 3,
+    "522": 2,
+    "523": 2,
+    "525": 3,
+    "526": 3,
+    "530": 7
+  },
+  "by_error_kind": {
+    "conn_closed": 56,
+    "conn_refused": 59,
+    "conn_reset": 15,
+    "dns_error": 5220,
+    "http_4xx": 5127,
+    "http_5xx": 205,
+    "invalid_url": 11,
+    "network_unreachable": 1,
+    "none": 13939,
+    "skipped_private": 1,
+    "timeout": 858,
+    "tls_error": 25,
+    "too_many_redirects": 44
+  },
+  "top_failures": [
+    {
+      "domain": "competitions.codalab.org",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://competitions.codalab.org/\": dial tcp 157.136.252.36:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 682
+    },
+    {
+      "domain": "www.image-net.org",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://www.image-net.org/\": dial tcp 171.64.68.16:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 515
+    },
+    {
+      "domain": "image-net.org",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://image-net.org/\": dial tcp 171.64.68.16:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 493
+    },
+    {
+      "domain": "anonymous.4open.science",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 417
+    },
+    {
+      "domain": "nlp.stanford.edu",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://nlp.stanford.edu/\": dial tcp 171.64.67.140:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 306
+    },
+    {
+      "domain": "www.yelp.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 212
+    },
+    {
+      "domain": "jmcauley.ucsd.edu",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://jmcauley.ucsd.edu/\": dial tcp 137.110.160.73:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 207
+    },
+    {
+      "domain": "www.ldc.upenn.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 181
+    },
+    {
+      "domain": "storage.googleapis.com",
+      "http_code": 400,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 180
+    },
+    {
+      "domain": "ai.stanford.edu",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://ai.stanford.edu/\": dial tcp 171.64.68.10:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 178
+    },
+    {
+      "domain": "data.vision.ee.ethz.ch",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 157
+    },
+    {
+      "domain": "www.ukbiobank.ac.uk",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 151
+    },
+    {
+      "domain": "scihub.copernicus.eu",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://scihub.copernicus.eu/\": dial tcp 146.59.215.226:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 145
+    },
+    {
+      "domain": "www.yf.io",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"https://www.vis.xyz\": dial tcp: lookup www.vis.xyz on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 135
+    },
+    {
+      "domain": "timeseriesclassification.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 126
+    },
+    {
+      "domain": "webscope.sandbox.yahoo.com",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://webscope.sandbox.yahoo.com/\": dial tcp: lookup webscope.sandbox.yahoo.com on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 117
+    },
+    {
+      "domain": "www.reddit.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 116
+    },
+    {
+      "domain": "www.cdc.gov",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 108
+    },
+    {
+      "domain": "wordnet.princeton.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 107
+    },
+    {
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 103
+    },
+    {
+      "domain": "goo.gl",
+      "http_code": 400,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 99
+    },
+    {
+      "domain": "ai.facebook.com",
+      "http_code": 400,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 98
+    },
+    {
+      "domain": "www.cbsr.ia.ac.cn",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://www.cbsr.ia.ac.cn/\": dial tcp 159.226.21.60:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 95
+    },
+    {
+      "domain": "rajpurkar.github.io",
+      "http_code": 404,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 90
+    },
+    {
+      "domain": "materialsproject.org",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 81
+    },
+    {
+      "domain": "bdd-data.berkeley.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 79
+    },
+    {
+      "domain": "datashare.is.ed.ac.uk",
+      "http_code": 0,
+      "error_kind": "conn_closed",
+      "error": "Get \"https://datashare.ed.ac.uk/\": EOF",
+      "attempts": "https,http",
+      "dataset_count": 78
+    },
+    {
+      "domain": "visualgenome.org",
+      "http_code": 520,
+      "error_kind": "http_5xx",
+      "attempts": "https",
+      "dataset_count": 78
+    },
+    {
+      "domain": "mulan.sourceforge.net",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 77
+    },
+    {
+      "domain": "ai.googleblog.com",
+      "http_code": 429,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 75
+    },
+    {
+      "domain": "openai.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 72
+    },
+    {
+      "domain": "www.timeseriesclassification.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 71
+    },
+    {
+      "domain": "moleculenet.org",
+      "http_code": 404,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 70
+    },
+    {
+      "domain": "tiny-imagenet.herokuapp.com",
+      "http_code": 404,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 67
+    },
+    {
+      "domain": "files.pushshift.io",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://files.pushshift.io/\": dial tcp: lookup files.pushshift.io on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 65
+    },
+    {
+      "domain": "www.iarpa.gov",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 65
+    },
+    {
+      "domain": "www.pdbbind.org.cn",
+      "http_code": 0,
+      "error_kind": "conn_closed",
+      "error": "Get \"http://www.pdbbind.org.cn/\": EOF",
+      "attempts": "https,http",
+      "dataset_count": 63
+    },
+    {
+      "domain": "datashare.ed.ac.uk",
+      "http_code": 0,
+      "error_kind": "conn_reset",
+      "error": "Get \"http://datashare.ed.ac.uk/\": read tcp 10.1.0.132:43986-\u003e129.215.67.172:80: read: connection reset by peer",
+      "attempts": "https,http",
+      "dataset_count": 61
+    },
+    {
+      "domain": "vision.stanford.edu",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://vision.stanford.edu/\": dial tcp 171.64.68.10:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 61
+    },
+    {
+      "domain": "www.opensubtitles.org",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 61
+    },
+    {
+      "domain": "sci2s.ugr.es",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"https://sci2s.ugr.es/\": context deadline exceeded",
+      "attempts": "https,http",
+      "dataset_count": 60
+    },
+    {
+      "domain": "vis-www.cs.umass.edu",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://vis-www.cs.umass.edu/\": dial tcp: lookup vis-www.cs.umass.edu on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 60
+    },
+    {
+      "domain": "ai.meta.com",
+      "http_code": 400,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 57
+    },
+    {
+      "domain": "lpdaac.usgs.gov",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 55
+    },
+    {
+      "domain": "research.fb.com",
+      "http_code": 400,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 55
+    },
+    {
+      "domain": "electricgrids.engr.tamu.edu",
+      "http_code": 503,
+      "error_kind": "http_5xx",
+      "attempts": "https",
+      "dataset_count": 54
+    },
+    {
+      "domain": "biometrics.cse.msu.edu",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://biometrics.cse.msu.edu/\": dial tcp 35.9.20.23:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 53
+    },
+    {
+      "domain": "motchallenge.net",
+      "http_code": 410,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 53
+    },
+    {
+      "domain": "oscar-corpus.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 52
+    },
+    {
+      "domain": "wmt-conference.org",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://wmt-conference.org/\": dial tcp: lookup wmt-conference.org on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 52
+    },
+    {
+      "domain": "www.mapillary.com",
+      "http_code": 400,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 51
+    },
+    {
+      "domain": "www.10xgenomics.com",
+      "http_code": 429,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 50
+    },
+    {
+      "domain": "www.sec.gov",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 49
+    },
+    {
+      "domain": "portal.dbmi.hms.harvard.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 48
+    },
+    {
+      "domain": "biocreative.bioinformatics.udel.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 47
+    },
+    {
+      "domain": "ls11-www.cs.tu-dortmund.de",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 47
+    },
+    {
+      "domain": "www.cs.unc.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 45
+    },
+    {
+      "domain": "www.maa.org",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 45
+    },
+    {
+      "domain": "hevc.hhi.fraunhofer.de",
+      "http_code": 0,
+      "error_kind": "conn_refused",
+      "error": "Get \"http://hevc.hhi.fraunhofer.de/\": dial tcp 193.174.67.65:80: connect: connection refused",
+      "attempts": "https,http",
+      "dataset_count": 44
+    },
+    {
+      "domain": "captain-whu.github.io",
+      "http_code": 404,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 41
+    },
+    {
+      "domain": "tankstemple.org",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://tankstemple.org/\": dial tcp: lookup tankstemple.org on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 41
+    },
+    {
+      "domain": "www-personal.umich.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 41
+    },
+    {
+      "domain": "www.nrel.gov",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://www.nrel.gov/\": dial tcp: lookup www.nrel.gov on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 41
+    },
+    {
+      "domain": "dl.fbaipublicfiles.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 39
+    },
+    {
+      "domain": "www.ycbbenchmarks.com",
+      "http_code": 500,
+      "error_kind": "http_5xx",
+      "attempts": "https",
+      "dataset_count": 39
+    },
+    {
+      "domain": "www.ub.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 37
+    },
+    {
+      "domain": "leaderboard.allenai.org",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://leaderboard.allenai.org/\": dial tcp: lookup leaderboard.allenai.org on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 36
+    },
+    {
+      "domain": "wmh.isi.uu.nl",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://wmh.isi.uu.nl/\": dial tcp 143.121.236.253:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 36
+    },
+    {
+      "domain": "www.bls.gov",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 36
+    },
+    {
+      "domain": "benchmark.ini.rub.de",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://benchmark.ini.rub.de/\": dial tcp: lookup benchmark.ini.rub.de on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 35
+    },
+    {
+      "domain": "vision.imar.ro",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 35
+    },
+    {
+      "domain": "yknzhu.wixsite.com",
+      "http_code": 404,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 35
+    },
+    {
+      "domain": "buildingparser.stanford.edu",
+      "http_code": 503,
+      "error_kind": "http_5xx",
+      "attempts": "https,http",
+      "dataset_count": 33
+    },
+    {
+      "domain": "earthdata.nasa.gov",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 33
+    },
+    {
+      "domain": "fred.stlouisfed.org",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"https://fred.stlouisfed.org/\": context deadline exceeded",
+      "attempts": "https,http",
+      "dataset_count": 33
+    },
+    {
+      "domain": "shorturl.at",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 33
+    },
+    {
+      "domain": "gaia.didichuxing.com",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://gaia.didichuxing.com/\": dial tcp: lookup gaia.didichuxing.com: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 32
+    },
+    {
+      "domain": "www.researchgate.net",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 32
+    },
+    {
+      "domain": "konect.uni-koblenz.de",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://konect.uni-koblenz.de/\": dial tcp: lookup konect.uni-koblenz.de on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 31
+    },
+    {
+      "domain": "www.ee.oulu.fi",
+      "http_code": 0,
+      "error_kind": "timeout",
+      "error": "Get \"http://www.ee.oulu.fi/\": dial tcp 130.231.15.72:80: i/o timeout",
+      "attempts": "https,http",
+      "dataset_count": 31
+    },
+    {
+      "domain": "www.pexels.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 31
+    },
+    {
+      "domain": "leetcode.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 30
+    },
+    {
+      "domain": "www.sinobiometrics.com",
+      "http_code": 0,
+      "error_kind": "tls_error",
+      "error": "Get \"https://ww17.sinobiometrics.com/\": remote error: tls: internal error",
+      "attempts": "https,http",
+      "dataset_count": 30
+    },
+    {
+      "domain": "clic.cimec.unitn.it",
+      "http_code": 503,
+      "error_kind": "http_5xx",
+      "attempts": "https",
+      "dataset_count": 29
+    },
+    {
+      "domain": "tedlium.github.io",
+      "http_code": 404,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 29
+    },
+    {
+      "domain": "www.mathworks.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 29
+    },
+    {
+      "domain": "www.tau-nlp.org",
+      "http_code": 404,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 29
+    },
+    {
+      "domain": "atriaseg2018.cardiacatlas.org",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://atriaseg2018.cardiacatlas.org/\": dial tcp: lookup atriaseg2018.cardiacatlas.org on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 28
+    },
+    {
+      "domain": "hci.iwr.uni-heidelberg.de",
+      "http_code": 500,
+      "error_kind": "http_5xx",
+      "attempts": "https",
+      "dataset_count": 28
+    },
+    {
+      "domain": "objaverse.xr",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://objaverse.xr/\": dial tcp: lookup objaverse.xr on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 28
+    },
+    {
+      "domain": "odds.cs.stonybrook.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https,http",
+      "dataset_count": 28
+    },
+    {
+      "domain": "public.roboflow.com",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 28
+    },
+    {
+      "domain": "crisisnlp.qcri.org",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://crisisnlp.qcri.org/\": dial tcp: lookup crisisnlp.qcri.org on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 27
+    },
+    {
+      "domain": "cvc.yale.edu",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://cvc.yale.edu/\": dial tcp: lookup cvc.yale.edu on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 27
+    },
+    {
+      "domain": "oai.epi-ucsf.org",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://oai.epi-ucsf.org/\": dial tcp: lookup oai.epi-ucsf.org on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 27
+    },
+    {
+      "domain": "webee.technion.ac.il",
+      "http_code": 0,
+      "error_kind": "conn_refused",
+      "error": "Get \"http://vee.technion.ac.il/\": dial tcp 132.68.238.16:80: connect: connection refused",
+      "attempts": "https,http",
+      "dataset_count": 27
+    },
+    {
+      "domain": "forensics.idealtest.org",
+      "http_code": 0,
+      "error_kind": "dns_error",
+      "error": "Get \"http://forensics.idealtest.org/\": dial tcp: lookup forensics.idealtest.org on 127.0.0.53:53: no such host",
+      "attempts": "https,http",
+      "dataset_count": 26
+    },
+    {
+      "domain": "people.cs.pitt.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 26
+    },
+    {
+      "domain": "tcci.ccf.org.cn",
+      "http_code": 410,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 26
+    },
+    {
+      "domain": "www.cesm.ucar.edu",
+      "http_code": 403,
+      "error_kind": "http_4xx",
+      "attempts": "https",
+      "dataset_count": 26
+    }
+  ],
+  "slowest": [
+    {
+      "domain": "life.bsc.es",
+      "http_code": 0,
+      "latency_ms": 24002,
+      "success": false
+    },
+    {
+      "domain": "www.sil-mali.org",
+      "http_code": 0,
+      "latency_ms": 24002,
+      "success": false
+    },
+    {
+      "domain": "aaltodoc.aalto.fi",
+      "http_code": 0,
+      "latency_ms": 24002,
+      "success": false
+    },
+    {
+      "domain": "www.openlegaldata.io",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "vlsp.hpda.vn",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "federalgovernmentzipcodes.us",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "www.washingtonpost.com",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "icdar2021.org",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "www.enterface.net",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "girder.hub.yt",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "ihuawen.com",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "www.czech-sudoku.com",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "simondedeyne.me",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "research.stlouisfed.org",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "www.rockstartit.com",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "www.pakdd2021.org",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "www.servicenow.com",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "rest.ensembl.org",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "www.unipen.org",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    },
+    {
+      "domain": "raws.dri.edu",
+      "http_code": 0,
+      "latency_ms": 24001,
+      "success": false
+    }
+  ],
+  "config": {
+    "concurrency": 200,
+    "limit": 0,
+    "max_duration": "0s",
+    "max_redirects": 5,
+    "retries": 0,
+    "skip_private": true,
+    "timeout": "12s",
+    "tls_verify": false
+  },
+  "environment": {
+    "CI": "true",
+    "GITHUB_ACTIONS": "true",
+    "GITHUB_EVENT_NAME": "schedule",
+    "GITHUB_REPOSITORY": "AstrayChao/dataset-url-probe",
+    "GITHUB_RUN_ID": "42357393196",
+    "GITHUB_RUN_NUMBER": "2",
+    "GITHUB_SHA": "8498f27c00a911ef857c4759707cfa9614d1d88a",
+    "GITHUB_WORKFLOW": "daily-probe",
+    "RUNNER_ARCH": "X64",
+    "RUNNER_ENVIRONMENT": "github-hosted",
+    "RUNNER_NAME": "GitHub Actions 1000003582",
+    "RUNNER_OS": "Linux",
+    "arch": "amd64",
+    "go_version": "go1.22.12",
+    "hostname": "runnervmwuk1x",
+    "os": "linux"
+  }
+}
